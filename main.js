@@ -1,14 +1,13 @@
 function checkIdName(button) {
-    const res = button.id;
     const num1 = parseFloat(document.getElementById('num1').value);
     const num2 = parseFloat(document.getElementById('num2').value);
 
     if(isNaN(num1) || isNaN(num2)) {
         document.getElementById('result').textContent = `数値を入力してください。`;
         return;
-    }
+    }    
 
-    switch(res) {
+    switch(button.id) {
         case 'btn-add':
             var result = num1 + num2;
             break;
@@ -22,6 +21,10 @@ function checkIdName(button) {
             break;
 
         case 'btn-div':
+            if(num2 === 0) {
+                document.getElementById('result').textContent = `0で割ることはできません。`;
+                return;
+            }
             var result = num1 / num2;
             break;    
     }
