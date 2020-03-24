@@ -1,22 +1,32 @@
 function checkIdName(button) {
     const res = button.id;
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
 
-    const num1 = parseFloat(document.getElementById("num1").value);
-    const num2 = parseFloat(document.getElementById("num2").value);
-
-    if (res === "btn-add") {        
-        var result = num1 + num2;
-    }else if(res === "btn-sub") {
-        var result = num1 - num2;
-    }else if(res === "btn-mul") {
-        var result = num1 * num2;
-    }else if(res === "btn-div") {
-        var result = num1 / num2;
+    if(isNaN(num1) || isNaN(num2)) {
+        document.getElementById('result').textContent = `数値を入力してください。`;
+        return;
     }
 
-    document.getElementById(
-        "result"
-        ).textContent = `答えは「${result}」です。`; 
+    switch(res) {
+        case 'btn-add':
+            var result = num1 + num2;
+            break;
+
+        case 'btn-sub':
+            var result = num1 - num2;
+            break;
+
+        case 'btn-mul':
+            var result = num1 * num2;
+            break;
+
+        case 'btn-div':
+            var result = num1 / num2;
+            break;    
+    }
+
+    document.getElementById('result').textContent = `答えは「${result}」です。`;
 }
 
 
